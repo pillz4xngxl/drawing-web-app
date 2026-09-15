@@ -337,15 +337,15 @@ opacityInput.addEventListener("input", event => {
 
 
 document.addEventListener("keydown", event => {
-    if (event.ctrlKey && event.key.toLowerCase() === "z") {
-        event.preventDefault();
-        undo();
-        return;
-    }
-
     if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "z") {
         event.preventDefault();
         redo();
+        return;
+    }
+    
+    if (event.ctrlKey && event.key.toLowerCase() === "z") {
+        event.preventDefault();
+        undo();
         return;
     }
 
