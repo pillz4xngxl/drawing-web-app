@@ -337,55 +337,67 @@ opacityInput.addEventListener("input", event => {
 
 
 document.addEventListener("keydown", event => {
-    if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "z") {
+    if (event.ctrlKey && event.shiftKey && event.code === "KeyZ") {
         event.preventDefault();
+        event.stopPropagation();
+
         redo();
         return;
     }
-    
-    if (event.ctrlKey && event.key.toLowerCase() === "z") {
+
+    if (event.ctrlKey && !event.shiftKey && event.code === "KeyZ") {
         event.preventDefault();
+        event.stopPropagation();
+
         undo();
         return;
     }
 
-    if (event.ctrlKey && event.key.toLowerCase() === "s") {
+    if (event.ctrlKey && event.code === "KeyS") {
         event.preventDefault();
         saveDrawing();
+        return;
     }
 
-    if (event.ctrlKey && event.key.toLowerCase() === "d") {
+    if (event.ctrlKey && event.code === "KeyD") {
         event.preventDefault();
         clearCanvas();
+        return;
     }
 
     if (event.key === "1") {
         drawingState.tool = "brush";
         updateSelectedTool(document.querySelector("[data-tool='brush']"));
+        return;
     }
 
     if (event.key === "2") {
         drawingState.tool = "eraser";
         updateSelectedTool(document.querySelector("[data-tool='eraser']"));
+        return;
     }
 
     if (event.key === "3") {
         drawingState.tool = "line";
         updateSelectedTool(document.querySelector("[data-tool='line']"));
+        return;
     }
 
     if (event.key === "4") {
         drawingState.tool = "rectangle";
         updateSelectedTool(document.querySelector("[data-tool='rectangle']"));
+        return;
     }
 
     if (event.key === "5") {
         drawingState.tool = "ellipse";
         updateSelectedTool(document.querySelector("[data-tool='ellipse']"));
+        return;
     }
 
     if (event.key === "6") {
         drawingState.tool = "text";
         updateSelectedTool(document.querySelector("[data-tool='text']"));
+        return;
     }
 });
